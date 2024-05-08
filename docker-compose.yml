@@ -4,7 +4,7 @@ services:
   setup:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     volumes:
-      - es_stack_certs:/usr/share/elasticsearch/config/certs:ro,z
+      - es_stack_certs:/usr/share/elasticsearch/config/certs:z
     user: "0"
     command: >
       bash -c '
