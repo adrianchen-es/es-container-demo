@@ -232,7 +232,7 @@ services:
     environment:
       - TAKE_FILE_OWNERSHIP
       - SERVERNAME=kibana
-      - SERVER_PUBLICBASEURL=https://${KB_PUBLICBASEURL:-some_url}
+      - SERVER_PUBLICBASEURL=${KB_PUBLICBASEURL:-https://some_url}
       - SERVER_BASEPATH=${KB_BASEPATH:-}
       - SERVER_SSL_KEY=config/certs/kib01/kib01.key
       - SERVER_SSL_CERTIFICATE=config/certs/kib01/kib01.crt
