@@ -86,7 +86,7 @@ services:
         condition: service_healthy
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     hostname: es01
-    container_name: es_node_01
+    #container_name: es_node_01
     volumes:
       - es_stack_certs:/usr/share/elasticsearch/config/certs:z
       - esdata01:/usr/share/elasticsearch/data:Z
@@ -132,7 +132,7 @@ services:
       - es01
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     hostname: es02
-    container_name: es_node_02
+    #container_name: es_node_02
     volumes:
       - es_stack_certs:/usr/share/elasticsearch/config/certs:z
       - esdata02:/usr/share/elasticsearch/data:Z
@@ -175,7 +175,7 @@ services:
       - es02
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     hostname: es03
-    container_name: es_node_03
+    #container_name: es_node_03
     volumes:
       - es_stack_certs:/usr/share/elasticsearch/config/certs:z
       - esdata03:/usr/share/elasticsearch/data:Z
@@ -223,7 +223,7 @@ services:
         condition: service_healthy
     image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
     hostname: kib01
-    container_name: es_kb_01
+    #container_name: es_kb_01
     volumes:
       - es_stack_certs:/usr/share/kibana/config/certs:z
       - kibanadata:/usr/share/kibana/data:Z
@@ -232,11 +232,11 @@ services:
     environment:
       - TAKE_FILE_OWNERSHIP
       - SERVERNAME=kibana
-      - SERVER_PUBLICBASEURL=https://${PUBLICBASEURL}
-      - SERVER_PUBLICBASEURL=https://${PUBLICBASEURL}
+      - SERVER_PUBLICBASEURL=https://${KB_PUBLICBASEURL:-some_url}
+      - SERVER_BASEPATH=${KB_PUBLICBASEPATH:-}
       - SERVER_SSL_KEY=config/certs/kib01/kib01.key
       - SERVER_SSL_CERTIFICATE=config/certs/kib01/kib01.crt
-      - ELASTICSEARCH_HOSTS=[https://es01:9200,https://es02:9200,https://es03:9200]
+      - ELASTICSEARCH_HOSTS=["https://es01:9200","https://es02:9200","https://es03:9200"]
       - ELASTICSEARCH_USERNAME=kibana_system
       - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
       - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
@@ -266,7 +266,7 @@ services:
           condition: service_healthy
       image: docker.elastic.co/beats/elastic-agent:${STACK_VERSION}
       hostname: fleet01
-      container_name: es_fleet_01
+      #container_name: es_fleet_01
       volumes:
         - es_stack_certs:/certs:z
       ports:
