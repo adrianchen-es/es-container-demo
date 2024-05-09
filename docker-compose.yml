@@ -90,8 +90,9 @@ services:
     depends_on:
       setup:
         condition: service_healthy
-    ## Switch to distribution:production if there is a manifest not found error
-    image: docker.elastic.co/package-registry/distribution:${STACK_VERSION}
+    ## Switch to distribution:${STACK_VERSION} if requiring a specific version
+    ## Some version may not have a matching manifest, fall back to production in such case
+    image: docker.elastic.co/package-registry/distribution:production
     hostname: epr01
     #container_name: es_epr_01
     volumes:
