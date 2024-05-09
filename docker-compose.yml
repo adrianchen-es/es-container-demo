@@ -291,7 +291,7 @@ services:
       - NODE_EXTRA_CA_CERTS=/usr/share/kibana/config/certs/ca/ca.crt
       ## AirGapped
       - XPACK_FLEET_ISAIRGAPPED=true
-      - XPACK_FLEET_REGISTRYURL="https://epr01:8443"
+      - XPACK_FLEET_REGISTRYURL="https://epr01:443"
       ## AirGap Testing disabling telemetry
       - TELEMETRY_OPTIN=false
       - TELEMETRY_ALLOWCHANGINGOPTINSTATUS=false
