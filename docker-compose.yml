@@ -299,7 +299,7 @@ services:
       - TELEMETRY_ALLOWCHANGINGOPTINSTATUS=false
       ## DEV Only - Enable built-in tracing
       - ELASTIC_APM_ACTIVE=true
-      - ELASTIC_APM_SERVERURL=https://epr:8200
+      - ELASTIC_APM_SERVERURL=https://fleet01:8200
       - ELASTIC_APM_CENTRALCONFIG=true
       - ELASTIC_APM_BREAKDOWNMETRICS=true
       - ELASTIC_APM_TRANSACTIONSAMPLERATE=1
